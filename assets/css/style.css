@@ -1,0 +1,145 @@
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  /* background-color: #f5f5f5; */
+  background: linear-gradient( limegreen, transparent ), linear-gradient( 90deg, skyblue, transparent ), linear-gradient( -90deg, coral, transparent );
+  background-blend-mode: screen;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+#icon {
+  max-width:60%;
+}
+
+.dashboard {
+  padding-top: 300px;
+}
+
+.bg-blue { 
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5277a0), to(#114357));
+}
+
+.bg-grey { 
+  background: linear-gradient(0deg, rgba(199,198,198,1) 0%, rgba(228,228,228,1) 20%, rgba(255,255,255,1) 100%);
+}
+
+.btn-dark-blue {
+  color: #fff;
+  background-color: #26546f;
+  border-color: #345f7e;
+}
+
+.btn-dark-blue:hover {
+  color: #fff;
+  background-color: #4a7097;
+  border-color: #4a7097;
+}
+
+.btn-outline-dark-blue {
+  color: #26546f;
+  border-color: #26546f;
+}
+
+.btn-outline-dark-blue:hover {
+    color: #fff;
+    background-color: #26546f;
+    border-color: #26546f;
+}
+
+.navbar-projects a {
+  color: #26546f;
+}
+
+.navbar-projects a:hover {
+  color: #4a7097;
+}
+
+
+
+/* Project tables */
+
+.project  i.icon.fas.fa-pen {
+  margin-right: 1rem;
+  padding-right: 1rem;
+  border-right: 1px solid gray;
+  height: 1rem;
+}
+
+.project_title .icon {
+  color:white;
+}
+
+.table-projects .icon {
+  color: grey;
+}
+
+.project  i.icon.fas.fa-pen:hover,
+.project  i.icon.fas.fa-trash-alt:hover {
+  filter: opacity(0.5);
+}
+
+.project_title-right i.icon.fas.fa-pen {
+  border-right: 1px solid white;
+}
+
+.project_title-left i.fas.fa-list-alt {
+  color: darkgrey;
+  margin-right: .5rem;
+  font-size: 1.5rem;
+  vertical-align: bottom;
+}
+
+.project_title-left {
+  font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.project-input i.fas.fa-plus {
+  color: #009688;  
+  margin-right: .5em;
+  font-size: 2rem;
+}
+
+.project-input span#task-title {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00968891), to(#009688));
+  border: none;
+  color: white;
+  padding: 0 2rem;
+}
+
+.project-input span#task-title:hover {
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#009688), to(#00968891));
+}
+
+table {
+  border-collapse: collapse;
+  border-style: hidden;
+  color:grey;
+}
+
+table th {
+  border: 1px solid lightgrey;
+}
+
+.project-table {
+  border-radius: 0 0 25px 25px;
+}
+
+
+
+
