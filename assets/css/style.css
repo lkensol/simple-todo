@@ -4,13 +4,9 @@ html, body {
 }
 
 body {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  /* background-color: #f5f5f5; */
+  /* background: #f5f5f5; */
   background: linear-gradient( limegreen, transparent ), linear-gradient( 90deg, skyblue, transparent ), linear-gradient( -90deg, coral, transparent );
   background-blend-mode: screen;
 }
@@ -27,7 +23,7 @@ body {
 }
 
 .dashboard {
-  padding-top: 300px;
+  padding-top: 80px;
 }
 
 .bg-blue { 

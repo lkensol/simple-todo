@@ -37,7 +37,7 @@ class Task extends Database{
                 ':project_id' => $project_id
             ];
             $stmt -> execute($data);
-            $result =  $smtm->fetchAll(PDO::FETCH_ASSOC);
+            $result =  $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
             echo $e->getMessage();
