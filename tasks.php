@@ -30,8 +30,8 @@ if(isset($_POST['task'])) {
         }
         
         if($verr == 0) {
-            $update = $task->create($name, $project_id, $user_id);
-            if($update) {
+            $add = $task->create($name, $project_id, $user_id);
+            if($add) {
                 $status = 1;
                 $msg .= 'Task has been added successfully.';
             } else {
@@ -77,7 +77,7 @@ if(isset($_POST['task'])) {
                 $status = 1;
                 $msg .= 'Task has been updated successfully.';
             } else {
-                $msg .= 'Some problem occurred, please try again.';
+                $msg .= 'Task has been not updated.';
             }
         } else {
             $msg .= 'Some problem occurred, please try again.';
@@ -113,6 +113,29 @@ if(isset($_POST['task'])) {
         );
         echo json_encode($response);
         
-    } 
+    } elseif ($post == 'order') {
+        $msg = '';
+        $status = 0;
+        if(!empty($_POST['order_task'])) {
+            $order_task = $_POST['order_task'];
+            $result = $task->save_order($order_task);
+            if($result) {
+                $status = 1;
+                $msg .= 'Oreder has been updated successfully.';
+            } else {
+                $msg .= 'Order has been not updated.';
+            } 
+        } else {
+            $msg .= 'Some problem occurred, please try again.';
+        }
+
+        // Return response as JSON format
+        $response = array(
+            'success' => $status,
+            'msg' => $msg
+        );
+        echo json_encode($response);
+        
+    }
         
 } 

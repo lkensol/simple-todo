@@ -24,8 +24,8 @@ if(isset($_POST['project'])) {
         }
         
         if($verr == 0) {
-            $update = $project-> create($user_id, $name);
-            if($update) {
+            $add = $project-> create($user_id, $name);
+            if($add) {
                 $status = 1;
                 $msg .= 'Project has been added successfully.';
             } else {
@@ -64,7 +64,7 @@ if(isset($_POST['project'])) {
                 $status = 1;
                 $msg .= 'Project has been updated successfully.';
             } else {
-                $msg .= 'Some problem occurred, please try again.';
+                $msg .= 'Project has been not updated.';
             }
         } else {
             $msg .= 'Some problem occurred, please try again.';
@@ -120,11 +120,11 @@ if(isset($_POST['project'])) {
                 echo '</div>';
                 echo '</div>';
                 echo '<div class="project-table bg-white">';
-                echo '<table class="table table-projects">';
-                echo '<tbody>';
+                echo '<table class="table table-project">';
+                echo '<tbody class="tbody-project" id="project-'.$project['id_project'].'">';
                     if(!empty($project['tasks'])){
                         foreach($project['tasks'] as $task){
-                            echo '<tr>';
+                            echo '<tr data-id="'.$task['id_task'].'">';
                             echo '<th class="text-center task-check" style="width:  8.33%">';
                             echo '<input data-index="0"  name="selectItem" type="checkbox" ';
                             if($task['status'] == 1) { echo 'checked';};
@@ -132,6 +132,7 @@ if(isset($_POST['project'])) {
                             echo '</th>';
                             echo '<th class ="task-text" >'.$task['name'].'</th>';
                             echo '<th class="text-center" style="width: 16.66%">';
+                            echo '<a href="#" class="" class="btn"><i class="fas fa-sort icon handle"></i></a>';
                             echo '<a href="#" taskId="'.$task['id_task'].'" projectId="'.$project['id_project'].'" class="edit-task" class="btn"><i class="icon fas fa-pen"></i></a>
                             <a href="javascript:void(0);" onclick="return confirm(\'Are you sure to delete data?\')?taskAction(\'delete\', \''.$task['id_task'].'\'):false;"><i class="icon fas fa-trash-alt"></i></a>';
                             echo '</th>';

@@ -1,0 +1,13 @@
+### Composer ###
+composer.phar
+/vendor/
+
+# Generated files
+.phpunit.result.cache
+
+# PHPUnit
+/app/phpunit.xml
+/phpunit.xml
+
+# Build data
+/build/

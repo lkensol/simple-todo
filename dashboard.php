@@ -58,18 +58,19 @@ if(!$user->is_loggedin()) {
 						</div>
 					</div>
 					<div class="project-table bg-white">
-						<table class="table table-projects">
-							<tbody>
+						<table class="table table-project">
+							<tbody class="tbody-project" id="project-<?=$project['id_project']; ?>">
 								<?php if(!empty($project['tasks'])): ?>
 									<?php foreach($project['tasks'] as $task): ?>
-										<tr>
+										<tr data-id="<?=$task['id_task']; ?>">
 											<th class="text-center task-check" style="width:  8.33%">
 												<input data-index="0"  name="selectItem" type="checkbox" <?php if($task['status'] == 1) { echo 'checked';} ?> value="0">
 											</th>
 											<th class ="task-text" ><?=$task['name'] ?></th>
 											<th class="text-center" style="width: 16.66%">
+												<a href="#" class="" class="btn"><i class="fas fa-sort icon handle"></i></a>
 												<a href="#" taskId="<?=$task['id_task']; ?>" projectId="<?=$project['id_project']; ?>" class="edit-task" class="btn"><i class="icon fas fa-pen"></i></a>
-												<a href="javascript:void(0);" onclick="return confirm('Are you sure to delete data?')?taskAction('delete', '<?php echo $task['id_task']; ?>'):false;"><i class="icon fas fa-trash-alt"></i></a>
+												<a href="javascript:void(0);" onclick="return confirm('Are you sure to delete data?')?taskAction('delete', '<?=$task['id_task']; ?>'):false;"><i class="icon fas fa-trash-alt"></i></a>
 											</th>
 										</tr>
 									<?php endforeach; ?>
@@ -118,6 +119,10 @@ if(!$user->is_loggedin()) {
 <?php require_once "templates/footer.php"; ?>
 
 <script>
+
+	$(".tbody-project").each(function(){ 
+		initialize_sortable(this); 
+	});
 
 	toastr.options = {
 	"closeButton": true,
@@ -201,8 +206,11 @@ if(!$user->is_loggedin()) {
 			data: data,
 			success:function(html){				
 				$('#projects').html(html);
-			}
-		});
+				$(".tbody-project").each(function(){ 
+					initialize_sortable(this); 
+				});
+			}			
+		});		
 	}
 
 	function projectAction(type, id, name){
@@ -270,12 +278,38 @@ if(!$user->is_loggedin()) {
 	});
 
 	// Actions on modal show and hidden events
-	$(function(){
-		
+	$(function(){		
 		$('#addList').on('hidden.bs.modal', function(){
 			$('#submit').attr("onclick", "");
 			$(this).find('form')[0].reset();
 		});
 	});
-	
+
+
+	function initialize_sortable(el) {
+		var sortable = Sortable.create(el, {
+			handle: '.handle',
+			animation: 150,
+			// Changed sorting within list
+			onUpdate: function (e) {
+				var order = sortable.toArray();
+				data = 'task=order'+'&order_task='+order;
+				$.ajax({
+					type: 'post',
+					url: 'tasks.php',
+					data: data,
+					dataType: 'json',
+					success:function(res){
+						if(res.success) {
+							toastr["success"](res.msg);
+						} else {
+							toastr["error"](res.msg);
+						}
+					}
+				});
+
+			},
+		});
+	}	
+
 </script>

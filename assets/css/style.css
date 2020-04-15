@@ -69,6 +69,7 @@ body {
 
 /* Project tables */
 
+.project  i.fas.fa-sort,
 .project  i.icon.fas.fa-pen {
   margin-right: 1rem;
   padding-right: 1rem;
@@ -80,10 +81,11 @@ body {
   color:white;
 }
 
-.table-projects .icon {
+.table-project .icon {
   color: grey;
 }
 
+.project  i.fas.fa-sort:hover,
 .project  i.icon.fas.fa-pen:hover,
 .project  i.icon.fas.fa-trash-alt:hover {
   filter: opacity(0.5);

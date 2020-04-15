@@ -35,7 +35,7 @@ class Project extends Database{
             $stmt -> execute($data);
             $projects =  $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach($projects as $key => $project) {
-                $sql = "SELECT * FROM tasks WHERE project_id = :project_id AND user_id = :user_id";
+                $sql = "SELECT * FROM tasks WHERE project_id = :project_id AND user_id = :user_id ORDER BY order_task";
                 $stmt = $this->conn->prepare($sql);
                 $data = [
                     ':user_id'=> $user_id,
