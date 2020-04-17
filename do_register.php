@@ -16,7 +16,7 @@ if(isset($_POST['do_register'])) {
     $msg = $validation->check_empty($_POST, array('username', 'password'));
 
     $check_name = $validation->isNameValid($name);
-    $check_pwd = $validation->idPasswordValid($pwd);
+    $check_pwd = $validation->isPasswordValid($pwd);
     
     if($msg) {
         echo json_encode(array('success' => 0, 'msg' => $msg));

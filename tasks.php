@@ -121,7 +121,7 @@ if(isset($_POST['task'])) {
             $result = $task->save_order($order_task);
             if($result) {
                 $status = 1;
-                $msg .= 'Oreder has been updated successfully.';
+                $msg .= 'Order has been updated successfully.';
             } else {
                 $msg .= 'Order has been not updated.';
             } 

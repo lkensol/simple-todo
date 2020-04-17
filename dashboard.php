@@ -15,7 +15,9 @@ $user = new User();
 $pr = new Project();
 $projects = $pr->get($_SESSION['user_session']);
 
+// echo('<pre>');
 // print_r($projects);
+// echo('</pre>');
 
 if(!$user->is_loggedin()) {
     $user->redirect('index.php');

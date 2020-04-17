@@ -8,7 +8,7 @@ class Validation {
     {
         $msg = null;
         foreach ($fields as $value) {
-            if (empty($data[$value])) {
+            if (empty(trim($data[$value]))) {
                 $msg .= "$value the field is empty <br />";
             }
         } 
@@ -24,7 +24,7 @@ class Validation {
         return $valid;
     }
 
-    public function idPasswordValid($pwd) {
+    public function isPasswordValid($pwd) {
         $valid = TRUE;
         $len = mb_strlen($pwd);
         if($len < 6 || $len>16) {

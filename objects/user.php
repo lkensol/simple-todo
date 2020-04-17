@@ -16,11 +16,11 @@ class User extends Database{
                 "SELECT * FROM  users WHERE username = :username LIMIT 1"
             );
 
-            $stmt->execute(array(':username'=>$username));
+            $stmt->execute(array(':username'=>trim($username)));
             $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if($stmt->rowCount() > 0) {
-                if(password_verify($pwd, $userRow['password'])){
+                if(password_verify(trim($pwd), $userRow['password'])){
                     $_SESSION['user_session'] = $userRow['id'];
                     return true;
                 } else {
@@ -54,7 +54,8 @@ class User extends Database{
                 $stmt->bindParam(":username", $username);
                 $stmt->bindParam(":password", $new_pwd);
                 $stmt->execute();
-                return $stmt;
+                $status = $stmt->rowCount();
+                return $status;
             } else {
                 return false;
             }
